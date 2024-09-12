@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .header, .footer {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .main-container {
+        margin: 20px auto;
+        max-width: 1200px;
+        padding: 20px;
+    }
+
+    .intro-section, .features-section, .testimonials-section {
+        margin-bottom: 30px;
+    }
+
+    .intro-section h2, .features-section h2, .testimonials-section h2 {
+        color: #333;
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .intro-text, .feature-item, .testimonial {
+        margin: 15px 0;
+        color: #555;
+    }
+
+    .features-section {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .feature-icon {
+        font-size: 24px;
+        color: #4CAF50;
+        margin-right: 10px;
+    }
+
+    .testimonial {
+        border-left: 4px solid #4CAF50;
+        padding-left: 15px;
+        font-style: italic;
+    }
+
+    .table-container {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        margin-top: 30px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    .eligible {
+        color: green;
+        font-weight: bold;
+    }
+
+    .not-eligible {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+<div class="header">
+    <h1>Customer and Product Overview</h1>
+</div>
+
+<div class="main-container">
+    <div class="intro-section">
+        <h2>Welcome to Our Customer and Product Page</h2>
+        <p class="intro-text">Explore the diverse range of products we offer and see how our valued customers are performing. Our platform is designed to provide you with all the necessary insights to make informed decisions.</p>
+    </div>
+
+    <div class="features-section">
+        <h2>Key Features</h2>
+        <div class="feature-item">
+            <span class="feature-icon">✔</span>
+            <p>Comprehensive Product Listings: Detailed descriptions and specifications of each product.</p>
+        </div>
+        <div class="feature-item">
+            <span class="feature-icon">✔</span>
+            <p>Real-time Customer Data: View up-to-date information on customer scores and eligibility.</p>
+        </div>
+        <div class="feature-item">
+            <span class="feature-icon">✔</span>
+            <p>Interactive Tables: Easy-to-read tables with sortable columns and dynamic styling.</p>
+        </div>
+    </div>
+
+    <div class="testimonials-section">
+        <h2>Customer Testimonials</h2>
+        <div class="testimonial">
+            <p>"The platform is intuitive and user-friendly. It provides all the information I need in a well-organized manner." - Harini</p>
+        </div>
+        <div class="testimonial">
+            <p>"I love the detailed product listings and the clear view of customer eligibility. It has greatly improved my decision-making process." - Shanmuga priyaa</p>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Score</th>
+                <th>Eligibility</th>
+            </tr>
+            {% for i in user1 %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.location }}</td>
+                <td>{{ i.score }}</td>
+                <td class="{% if i.score >= 90 %}eligible{% else %}not-eligible{% endif %}">
+                    {% if i.score >= 90 %}
+                        Eligible
+                    {% else %}
+                        Not Eligible
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+</div>
+
+{% endblock %}

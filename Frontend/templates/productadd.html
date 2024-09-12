@@ -1,0 +1,59 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<style>
+    .product-form {
+        margin: 0 auto;
+        max-width: 500px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .product-form input,
+    .product-form select,
+    .product-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .submit-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .submit-btn:hover {
+        background-color: #45a049;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 24px;
+    }
+
+    form {
+        text-align: left;
+    }
+</style>
+
+<center><h1>productadd</h1></center>
+
+<form method="POST" class="product-form">
+    {% csrf_token %}
+    {{ proform }}
+    <br>
+    <button class="submit-btn">Submit</button>
+</form>
+
+{% endblock %}
+

@@ -1,0 +1,60 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<style>
+    .customer-form {
+        margin: 0 auto;
+        max-width: 500px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .customer-form input,
+    .customer-form select,
+    .customer-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .submit-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .submit-btn:hover {
+        background-color: #45a049;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 24px;
+    }
+
+    form {
+        text-align: left;
+    }
+</style>
+<br>
+
+<center><h1>Customeradd</h1></center>
+
+<form method="POST" class="customer-form">
+    {% csrf_token %}
+    {{ cusform }}
+    <br>
+    <button class="submit-btn">Submit</button>
+</form>
+
+{% endblock %}
+
