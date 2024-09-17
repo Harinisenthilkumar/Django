@@ -5,6 +5,10 @@ class User_details(AbstractUser):
     Mobile_number = models.CharField(max_length=200)
     Address = models.CharField(max_length=200)
     Age = models.IntegerField(default=1)
+    def __str__(self): 
+        return self.username
+    
+
     
     
     

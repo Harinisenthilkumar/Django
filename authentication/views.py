@@ -25,8 +25,14 @@ def logoutpage(request):
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------
 def signup(request):
-    if request.method == 'POST':
-        new_user = User_details(
+    if request.method == 'POST': 
+        user_check = User_details.objects.filter(username=request.POST['username']) 
+        print(user_check) 
+        if len(user_check)>0: 
+           msg = {"error": "Username already exists"} 
+           return render(request,"Signup.html",msg) 
+        else:         
+            new_user = User_details(
             username = request.POST['username'],
             password = request.POST['password'],
             first_name = request.POST['first_name'],
