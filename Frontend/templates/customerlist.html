@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static%}
+
 
 {% block content %}
 <style>
@@ -69,4 +71,6 @@
     </tr>
     {% endfor %}
 </table>
+
+<img src = "{% static 'Assets/images/shanmu.jpg' %}" alt="image" width="300">
 {% endblock %}
