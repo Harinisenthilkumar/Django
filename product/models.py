@@ -12,6 +12,9 @@ class Product(models.Model):
     
     final_price = models.FloatField(default=0)
     
+    picture = models.ImageField(null=True,upload_to='images/')
+    
+    
     def __str__(self):
         return self.Brand_name+" "+self.model_name
     

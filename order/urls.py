@@ -4,10 +4,12 @@ from.models import *
 from .forms import *
 
 urlpatterns = [
-    path('orderlist/', orderlist, name='order_list'),
-    path('orderadd/',orderadd, name='odr_add'),
-    path('orderupdate/<int:id>/', orderupdate, name='odr_update'),
-    path('orderdelete/<int:id>/', orderdelete, name='odr_delete'),
+    path('orderlist/', OrderListview.as_view(), name='odr_list'),
+    path('orderadd/', OrderAddview.as_view(), name='odr_add'),
+    path('orderadd/<int:id>/', OrderUpdateView.as_view(), name='odr_update'),
+    path('orderdelete/<int:id>/', OrderDeleteView.as_view(), name='odr_delete'),
+    
+    
     
     
 ]

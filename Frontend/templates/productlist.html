@@ -41,6 +41,7 @@
 
 <table>
     <tr>
+        <th>Picture</th>
         <th>Brand Name</th>
         <th>Model Name</th>
         <th>Price</th>
@@ -51,6 +52,14 @@
     </tr>
     {% for i in prolist %}
     <tr>
+        <td>
+            {% if i.picture %}
+            <img src="{{i.picture.url}}" alt=""width="200">
+            {% else %}
+            No Picture
+            {% endif %}
+            
+            <td>
         <td>{{ i.Brand_name }}</td>
         <td>{{ i.model_name }}</td>
         <td>{{ i.price }}</td>
