@@ -11,9 +11,9 @@
         color: #fff;
     }
 
-    .container {
-        width: 90%;
-        margin: auto;
+    *container {
+        width: 100%;
+
     }
 
     /* Carousel Styles */
@@ -240,7 +240,7 @@
         border: none;
         border-radius: 5px;
     }
-    /* Offer Banner Styles */
+ /* Offer Banner Styles */
 .offer-banner {
     display: flex;
     align-items: center;
@@ -249,9 +249,12 @@
     color: #fff; /* White text */
     padding: 20px;
     border-radius: 10px;
-    margin: 20px 0;
+    margin: 0; /* Remove margin to make it full screen */
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Soft shadow */
     transition: transform 0.3s, box-shadow 0.3s; /* Animation on hover */
+    min-height: 100vh; /* Full height of the viewport */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 .offer-banner:hover {
@@ -313,6 +316,7 @@
         flex-direction: column; /* Stack items vertically */
         align-items: center; /* Center align */
         text-align: center; /* Center text */
+        min-height: 100vh; /* Ensure full height on mobile */
     }
 
     .offer-content {
@@ -324,7 +328,6 @@
         max-width: 100%; /* Full width for image */
     }
 }
-
 
 
 .shop-now-button {
@@ -346,7 +349,7 @@
 
 .flash-sale {
     text-align: center;
-    margin: 20px 0;
+    margin: 0;
     padding: 20px;
     background: #333; /* Darker background */
     border-radius: 10px;
@@ -362,34 +365,267 @@
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 90px; /* Adjust the gap to increase or decrease the space between grid items */
+    padding: 40px; /* Optional padding to add space around the grid itself */
 }
+
 
 .product {
     background: #222;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px; /* Increased padding for better spacing */
     text-align: center;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    color: #fff; /* Text color */
+    position: relative; /* For pseudo-element positioning */
+    overflow: hidden; /* Prevents overflow during animations */
 }
 
 .product:hover {
-    transform: scale(1.05);
+    transform: scale(1.0);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+    background: #333; /* Slightly lighter background on hover */
+}
+
+/* Add a subtle glow effect */
+.product::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1); /* Light overlay */
+    border-radius: 10px;
+    opacity: 0; /* Start with no visibility */
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.product:hover::before {
+    opacity: 1; /* Fade in the overlay on hover */
+}
+
+/* Adding a scale-up effect on image inside the product */
+.product img {
+    transition: transform 0.3s ease;
+}
+
+.product:hover img {
+    transform: scale(1.0); /* Slightly scale the image */
+}
+
+.offer-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.offer-card {
+    position: relative;
+    margin: 20px;
+    flex: 1 1 calc(50% - 40px); /* Equal width for two cards */
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 1s ease; /* Animation on load */
+    border: none; /* Remove any border */
+}
+
+.offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+.offer-image {
+    position: relative;
+}
+
+.offer-image img {
+    max-width: 100%; /* Full width */
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+.offer-card:hover .offer-image img {
+    transform: scale(1.1); /* Slightly larger scale effect on hover */
+}
+
+/* Keyframe animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Slide up effect */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End position */
+    }
+}
+
+/* Additional animation for cards */
+.offer-card {
+    animation: bounce 0.5s infinite alternate; /* Add bounce effect */
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-5px);
+    }
 }
 
 
 
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .offer-card {
+        flex: 1 1 100%; /* Full width for mobile */
+    }
+}
+
+
+
+.carousel-heading {
+    text-align: center;
+    color: white; /* Adjust the color as needed */
+    margin: 20px 0; /* Add some space above and below */
+    font-size: 24px; /* Adjust the font size as needed */
+}
+
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: black; /* Background color for contrast */
+}
+
+.carousel-grid {
+    display: flex;
+    transition: transform 0.5s ease;
+    /* Use flex-grow to ensure the width is dynamic based on the number of cards */
+}
+
+.carousel-card {
+    background: #222; /* Use a valid color value */
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    width: 200px; /* Fixed width for each card */
+    height: 300px; /* Fixed height for cards */
+    margin: 0 5px; /* Space between cards */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0; /* Prevent cards from shrinking */
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 150px; /* Set a fixed height for images */
+    object-fit: contain;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+    background: #111; /* Dark background */
+    color: #fff; /* White text */
+    padding: 40px;
+    text-align: center;
+    position: relative; /* For hover animations */
+    overflow: hidden;
+}
+
+.footer-content {
+    margin-bottom: 20px;
+}
+
+.email-input {
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    width: 300px; /* Fixed width */
+    transition: box-shadow 0.3s;
+}
+
+.email-input:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 255, 0.5); /* Focus effect */
+}
+
+.subscribe-button {
+    padding: 10px 20px;
+    background: #007bff; /* Button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.subscribe-button:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+    background: #0056b3; /* Darker button color on hover */
+}
+
+.footer-links {
+    margin-top: 20px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .email-input {
+        width: 100%; /* Full width on mobile */
+    }
+}
 
 
 </style>
 
-<div class="container">
+<div class="fullscren-container">
     <!-- Hero Section with Carousel -->
     <div class="carousel hero-carousel">
         <div class="carousel-images" id="carousel-images">
             <img src="/static/Assets/images/wallpaper-2.jpeg" alt="Banner 1">
             <img src="/static/Assets/images/wallpaper.jpg" alt="Banner 2">
-            <img src="/static/Assets/images/Blackview-BV6000S-IP68-Smartphone-Android-6.0,-Quad-Core-CPU,-2-Go-de-RAM,-4G,-Dual-SIM,-NFC,-OTG-(Orange)-High-Tech-Place-CH0839-16.jpg" alt="Banner 3">
+            <img src="/static/Assets/images/wallpaper-4.jpeg" alt="Banner 3">
         </div>
     </div>
 
@@ -429,6 +665,13 @@
                     <p class="description">A flagship smartphone with powerful performance.</p>
                 </div>
             </div>
+            <div class="new-launch-item">
+                <img src="/static/Assets/images/7.png" alt="New Phone 4">
+                <div class="item-details">
+                    <h3>Motorolla Edge</h3>
+                    <p class="price">$749</p>
+                    <p class="description">A flagship smartphone with powerful performance.</p>
+                </div>
         </div>
     </section>
 
@@ -497,10 +740,11 @@
             <h3>iphone</h3>
             <p>$699</p>
         </div>
+        
     </div>
     <div class="video-section">
     <video autoplay muted loop class="background-video">
-        <source src="/static/Assets/videos/2825515-hd_1920_1080_24fps.mp4" type="video/mp4">
+        <source src="/static/Assets/videos/phone.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <div class="video-overlay">
@@ -511,13 +755,84 @@
 
     </div>
 </div>
+<!-- Offer Banner Section -->
 
-   
-   
- 
+<section class="offer-section">
+    <div class="offer-card">
+        <div class="offer-image">
+            <img src="/static/Assets/images/banner.jpg" alt="Buy One Get One Free">
+        </div>
+        <div class="offer-content">
+            
+        </div>
+    </div>
+
+    <div class="offer-card">
+        <div class="offer-image">
+            <img src="/static/Assets/images/banner-2.jpg" alt="30% Off">
+        </div>
+        
+        </div>
+    </div>
+</section>
 
 
-    <!-- Customer Favorites -->
+
+<div class="carousel-section">
+  <h2 class="carousel-heading">Essentials that pair perfectly with your favourite devices.</h2>
+
+<div class="carousel-container">
+  <div class="carousel-grid">
+    <div class="carousel-card">
+      <img src="/static/Assets/images/poweradapter1.gif" alt="Power Adapter">
+      <h5>Power Adapter</h5>
+      <p>Compact and powerful.</p>
+    </div>
+    
+    <div class="carousel-card">
+      <img src="/static/Assets/images/usb.gif" alt="USB Adapter">
+      <h5>USB Adapter</h5>
+      <p>Reliable and fast charging solution.</p>
+    </div>
+    <div class="carousel-card">
+      <img src="/static/Assets/images/siliconcase.gif" alt="Silicon Case">
+      <h5>Silicon Case</h5>
+      <p>Protect your device in style.</p>
+    </div>
+    <div class="carousel-card">
+      <img src="/static/Assets/images/magsafe.gif" alt="MagSafe Charger">
+      <h5>MagSafe Charger</h5>
+      <p>Effortless charging with MagSafe technology.</p>
+    </div>
+    
+    <div class="carousel-card active">
+      <img src="/static/Assets/images/charger.gif" alt="Charger">
+      <h5>Charger</h5>
+      <p>Essentials that pair perfectly with your favorite devices.</p>
+    </div>
+    <div class="carousel-card">
+      <img src="/static/Assets/images/wallet.gif" alt="iPhone FineWoven Wallet">
+      <h5>iPhone Wallet</h5>
+      <p>Convenient and stylish storage.</p>
+    </div>
+    <div class="carousel-card">
+      <img src="/static/Assets/images/powerbank.gif" alt="Power Bank">
+      <h5>Power Bank</h5>
+      <p>Stay charged on the go.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Customer Favorites -->
     <div class="customer-favorites">
         <h2>Our Customers Love These!</h2>
         <div class="product-grid">
@@ -556,40 +871,66 @@
 
 
 
-    <!-- Footer -->
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <h2>Stay Connected</h2>
+        <p>Subscribe to our newsletter for the latest updates and offers.</p>
+        <input type="email" placeholder="Enter your email" class="email-input">
+        <button class="subscribe-button">Subscribe</button>
+    </div>
+    <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+    </div>
     <div class="footer">
         <p>&copy; 2024 Harini's Mart. All rights reserved.</p>
     </div>
 </div>
 
+
+</footer>
 <script>
-    let currentIndex = 0;
-    const carouselImages = document.getElementById('carousel-images');
 
-    function showNextImage() {
-        currentIndex = (currentIndex + 1) % carouselImages.children.length;
-        const offset = -currentIndex * 100; // Each image takes full viewport width
-        carouselImages.style.transform = `translateX(${offset}vw)`;
-    }
+let currentIndex = 0;
+const carouselImages = document.getElementById('carousel-images');
+const carousel = document.querySelector('.carousel-grid');
+const totalCards = document.querySelectorAll('.carousel-card').length;
+const cardWidth = 210; // Width of each card (including margin)
 
-    setInterval(showNextImage, 3000); // Change image every 3 seconds
+// Function to show the next image in the image carousel
+function showNextImage() {
+    currentIndex = (currentIndex + 1) % carouselImages.children.length;
+    const offset = -currentIndex * 100; // Each image takes full viewport width
+    carouselImages.style.transform = `translateX(${offset}vw)`;
+}
 
-    function filterProducts() {
-        const filterValue = document.getElementById('category-filter').value;
-        const products = document.querySelectorAll('.product');
+// Function to move the card carousel
+function moveCarousel() {
+    currentIndex = (currentIndex + 1) % totalCards;
+    carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+}
 
-        products.forEach(product => {
-            if (filterValue === 'all' || product.classList.contains(filterValue)) {
-                product.style.display = 'block';
-            } else {
-                product.style.display = 'none';
-            }
-        });
-    }
+// Function to filter products based on category
+function filterProducts() {
+    const filterValue = document.getElementById('category-filter').value;
+    const products = document.querySelectorAll('.product');
 
-   
+    products.forEach(product => {
+        if (filterValue === 'all' || product.classList.contains(filterValue)) {
+            product.style.display = 'block'; // Show the product
+        } else {
+            product.style.display = 'none'; // Hide the product
+        }
+    });
+}
+
+// Set intervals for both carousels
+setInterval(showNextImage, 4000); // Change image every 3 seconds
+setInterval(moveCarousel, 4000); // Change card every 3 seconds
 </script>
 
-   
-</script>
 {% endblock %}
