@@ -1,14 +1,22 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block content %}
 <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #1f1f1f; /* Slightly darker background */
+        color: #ffffff;
+        padding: 20px;
+    }
+
     .customer-form {
         margin: 0 auto;
         max-width: 500px;
         padding: 20px;
-        border: 1px solid #ccc;
         border-radius: 10px;
-        background-color: #f9f9f9;
+        background-color: #2a2a2a; /* Dark background for the form */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow for emphasis */
+        color: #ffffff;
     }
 
     .customer-form input,
@@ -17,12 +25,22 @@
         width: 100%;
         padding: 10px;
         margin: 10px 0;
-        border: 1px solid #ccc;
+        border: 1px solid #555; /* Dark border for inputs */
         border-radius: 5px;
+        background-color: #3b3b3b; /* Darker input background */
+        color: #ffffff; /* White input text */
+        transition: background-color 0.3s, border 0.3s;
+    }
+
+    .customer-form input:focus,
+    .customer-form select:focus,
+    .customer-form textarea:focus {
+        background-color: #4a4a4a; /* Highlight input on focus */
+        border-color: #007bff; /* Blue border on focus */
     }
 
     .submit-btn {
-        background-color: #4CAF50;
+        background-color: #007bff; /* Green button for Submit */
         color: white;
         padding: 10px 20px;
         border: none;
@@ -30,14 +48,16 @@
         cursor: pointer;
         width: 100%;
         font-size: 16px;
+        transition: background-color 0.3s, transform 0.2s;
     }
 
     .submit-btn:hover {
-        background-color: #45a049;
+        background-color: #218838; /* Darker green on hover */
+        transform: translateY(-2px); /* Subtle lift effect */
     }
 
     h1 {
-        color: #333;
+        color: #ffffff; /* White title */
         font-size: 24px;
     }
 
@@ -45,9 +65,10 @@
         text-align: left;
     }
 </style>
+
 <br>
 
-<center><h1>Customeradd</h1></center>
+<center><h1>Customer Add</h1></center>
 
 <form method="POST" class="customer-form">
     {% csrf_token %}
@@ -57,4 +78,3 @@
 </form>
 
 {% endblock %}
-
