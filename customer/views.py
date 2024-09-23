@@ -3,12 +3,15 @@ from django.http import HttpResponse
 from .models import *
 from .forms import *
 from django.views import View
+from django.contrib .auth.mixins import LoginRequiredMixin
+
 def index(request):
     return render(request,'index.html')
 def about(request):
     return render(request,'about.html')
 
-class CustomerListView(View):
+class CustomerListView(LoginRequiredMixin,View):
+    login_url = "/"
     def get(self,request):
         data = {"cuslist":Customer.objects.all()}
         print(data)

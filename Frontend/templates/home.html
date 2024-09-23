@@ -11,31 +11,32 @@
         color: #fff;
     }
 
-    *container {
-        width: 100%;
+   /* Fullscreen Container */
+*fullscreen-container {
+    width: 100%;
+}
 
-    }
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 100vh; /* Full height */
+}
 
-    /* Carousel Styles */
-    .carousel {
-        position: relative;
-        margin-top: 20px;
-        border-radius: 8px;
-        overflow: hidden;
-        height: 100vh; /* Full height */
-    }
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%; /* Full height */
+}
 
-    .carousel-images {
-        display: flex;
-        transition: transform 0.5s ease;
-        height: 100%; /* Full height */
-    }
+.carousel img {
+    width: 100vw; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover without stretching */
+}
 
-    .carousel img {
-        width: 100vw; /* Full width */
-        height: 100%; /* Full height */
-        object-fit: cover;
-    }
 
     /* Product Section */
     .product-grid {
@@ -531,6 +532,91 @@
 
 
 
+/* Cart Card Image */
+.cart-card img {
+    width: 100%; /* Full width of the card */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire area */
+    border-radius: 8px;
+}
+/* Section Heading */
+.section-heading {
+    font-size: 2rem;
+    color: #fff; /* White text */
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Cart Grid */
+.cart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #121212; /* Black background */
+}
+
+/* Cart Card */
+.cart-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #fff; /* White border */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    filter: grayscale(100%); /* Black and white filter initially */
+}
+
+.cart-card:hover {
+    transform: scale(1.05); /* Zoom-in effect on hover */
+    filter: grayscale(0%); /* Remove grayscale on hover */
+}
+
+/* Cart Card Image */
+.cart-card img {
+    width: 100%; /* Full width of the card */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire area */
+    border-radius: 8px;
+}
+
+/* Cart Title */
+.cart-title {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    background-color: #ff6347; /* Tomato button color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #ff4500; /* Darker shade on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -602,16 +688,16 @@
 
 
 </style>
-
-<div class="fullscren-container">
+<div class="fullscreen-container">
     <!-- Hero Section with Carousel -->
     <div class="carousel hero-carousel">
         <div class="carousel-images" id="carousel-images">
-            <img src="/static/Assets/images/wallpaper-2.jpeg" alt="Banner 1">
-            <img src="/static/Assets/images/wallpaper.jpg" alt="Banner 2">
-            <img src="/static/Assets/images/wallpaper-4.jpeg" alt="Banner 3">
+            <img src="/static/Assets/images/wallpaper-3.jpeg" alt="Banner 1">
+            <img src="/static/Assets/images/wallpaper-1.jpeg" alt="Banner 2">
+            <img src="/static/Assets/images/wallpaper-2.jpeg" alt="Banner 3">
         </div>
     </div>
+</div>
 
     <!-- NEW LAUNCH -->
     <section class="new-launch-section">
@@ -808,6 +894,57 @@
 
 
 
+
+
+
+
+
+
+
+
+<div class="favourites-section">
+    <h2 class="section-heading">Add Your Favourites</h2>
+    
+    <div class="cart-grid">
+        <div class="cart-card">
+            <img src="/static/Assets/images/20.png" alt="Cart Item 1">
+            <div class="cart-title">Item 1: Product 1</div>
+            <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="cart-card">
+            <img src="/static/Assets/images/wallpaper-1.jpeg" alt="Cart Item 2">
+            <div class="cart-title">Item 2: Product 2</div>
+            <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="cart-card">
+            <img src="/static/Assets/images/wallpaper-2.jpeg" alt="Cart Item 3">
+            <div class="cart-title">Item 3: Product 3</div>
+            <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="cart-card">
+            <img src="/static/Assets/images/wallpaper-3.jpeg" alt="Cart Item 4">
+            <div class="cart-title">Item 4: Product 4</div>
+            <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="cart-card">
+            <img src="/static/Assets/images/15.png" alt="Cart Item 5">
+            <div class="cart-title">Item 5: Product 5</div>
+            <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="cart-card">
+            <img src="/static/Assets/images/2.png" alt="Cart Item 6">
+            <div class="cart-title">Item 6: Product 6</div>
+            <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+
+
+  
+
+
+
 <!-- Customer Favorites -->
     <div class="customer-favorites">
         <h2>Our Customers Love These!</h2>
@@ -870,25 +1007,18 @@
 
 </footer>
 <script>
-
 let currentIndex = 0;
 const carouselImages = document.getElementById('carousel-images');
-const carousel = document.querySelector('.carousel-grid');
-const totalCards = document.querySelectorAll('.carousel-card').length;
-const cardWidth = 210; // Width of each card (including margin)
 
 // Function to show the next image in the image carousel
 function showNextImage() {
-    currentIndex = (currentIndex + 1) % carouselImages.children.length;
-    const offset = -currentIndex * 100; // Each image takes full viewport width
-    carouselImages.style.transform = `translateX(${offset}vw)`;
+    currentIndex = (currentIndex + 1) % carouselImages.children.length; // Loop through images
+    const offset = -currentIndex * 100; // Each image takes full viewport width (100vw)
+    carouselImages.style.transform = `translateX(${offset}vw)`; // Move images horizontally
 }
 
-// Function to move the card carousel
-function moveCarousel() {
-    currentIndex = (currentIndex + 1) % totalCards;
-    carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-}
+// Automatically transition the images every 3 seconds
+setInterval(showNextImage, 3000); // 3000ms = 3 seconds
 
 // Function to filter products based on category
 function filterProducts() {
@@ -907,6 +1037,9 @@ function filterProducts() {
 // Set intervals for both carousels
 setInterval(showNextImage, 4000); // Change image every 3 seconds
 setInterval(moveCarousel, 4000); // Change card every 3 seconds
+
+
+
 </script>
 
 {% endblock %}
