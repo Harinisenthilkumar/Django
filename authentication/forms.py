@@ -1,10 +1,13 @@
 from django import forms
 from .models import *
 
+
 class UserForm(forms.ModelForm):
     class Meta:
-        model = Userdetails
+        model = User_details
         fields="__all__"
+        
+        
         
         
         

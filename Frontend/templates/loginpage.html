@@ -12,24 +12,25 @@
         }
         body {
             font-family: 'Roboto', Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #1f1f1f; /* Dark background */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            color: #ffffff; /* Light text color */
         }
         .login-container {
-            background-color: #fff;
+            background-color: #333; /* Dark container background */
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Dark shadow */
             width: 360px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .login-container h1 {
-            color: #333;
+            color: #ffffff; /* White heading */
             font-size: 28px;
             margin-bottom: 30px;
         }
@@ -41,19 +42,21 @@
         .login-form input {
             margin-bottom: 20px;
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid #555; /* Darker border */
             border-radius: 6px;
             font-size: 16px;
+            background-color: #444; /* Dark input background */
+            color: #ffffff; /* White text in inputs */
             transition: border 0.3s ease;
         }
         .login-form input:focus {
             outline: none;
-            border-color: #007bff;
+            border-color: #007bff; /* Blue border on focus */
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
         .login-form button {
             padding: 12px;
-            background-color: #007bff;
+            background-color: #007bff; /* Blue button */
             color: white;
             border: none;
             border-radius: 6px;
@@ -62,24 +65,24 @@
             transition: background-color 0.3s ease;
         }
         .login-form button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Darker blue on hover */
         }
         .login-footer {
             text-align: center;
             margin-top: 20px;
         }
         .login-footer p {
-            color: #666;
+            color: #cccccc; /* Light gray text */
             font-size: 14px;
         }
         .login-footer a {
-            color: #007bff;
+            color: #007bff; /* Blue links */
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
         .login-footer a:hover {
-            color: #0056b3;
+            color: #0056b3; /* Darker blue on hover */
         }
     </style>
 </head>
@@ -88,8 +91,8 @@
         <h1>Login</h1>
         <form method="POST" action="" class="login-form">
             {% csrf_token %}
-            <input type="username" name="username"  required>
-            <input type="password" name="password"required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
             {{error}}
             <button type="submit">Login</button>
         </form>

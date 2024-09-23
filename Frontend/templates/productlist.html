@@ -2,64 +2,116 @@
 
 {% block content %}
 <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #2c2c2c; /* Mild dark background */
+        color: #ffffff; /* Light text color */
+        padding: 20px;
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #333; /* Dark background for the table */
+        border-radius: 8px; /* Rounded corners for the table */
+        overflow: hidden; /* Prevents border-radius from being clipped */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
     }
 
     th, td {
-        padding: 10px;
+        padding: 15px;
         text-align: left;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #444; /* Darker line for separation */
     }
 
     th {
-        background-color: #f2f2f2;
+        background-color: #444; /* Darker grey header */
+        color: #ffffff; /* White text for contrast */
+        font-size: 1.1em;
+        text-transform: uppercase; /* Uppercase for header */
+    }
+
+    td {
+        background-color: #555; /* Slightly lighter background for table data */
+        color: #ffffff; /* White text for visibility */
     }
 
     tr:hover {
-        background-color: #f5f5f5;
+        background-color: #666; /* Mild grey hover effect */
+    }
+
+    img {
+        width: 100px; /* Adjusted size for better layout */
+        border-radius: 5px; /* Rounded corners for images */
+        transition: transform 0.3s; /* Animation for image hover */
+    }
+
+    img:hover {
+        transform: scale(1.05); /* Scale effect on hover */
     }
 
     button {
-        padding: 5px 10px;
-        background-color: #4CAF50;
+        padding: 8px 12px;
+        background-color: #007bff; /* Blue button */
         color: white;
         border: none;
+        border-radius: 4px;
         cursor: pointer;
+        transition: background 0.3s, transform 0.2s; /* Animation */
+        font-size: 0.9em; /* Slightly smaller button text */
     }
 
     button:hover {
-        background-color: #45a049;
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: translateY(-2px); /* Lift effect */
     }
 
     a {
         text-decoration: none;
     }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        img {
+            width: 80px; /* Smaller image on mobile */
+        }
+
+        button {
+            padding: 6px 10px; /* Smaller button padding on mobile */
+        }
+    }
 </style>
-<br>
 
 <table>
     <tr>
+        <th>Picture</th>
         <th>Brand Name</th>
         <th>Model Name</th>
         <th>Price</th>
         <th>GST</th>
         <th>Final Price</th>
-        <th>Update </th>
-        <th> Delete </th>
+        <th>Update</th>
+        <th>Delete</th>
     </tr>
     {% for i in prolist %}
     <tr>
+        <td>
+            {% if i.picture %}
+            <img src="{{ i.picture.url }}" alt="Product Image">
+            {% else %}
+            No Picture
+            {% endif %}
+        </td>
         <td>{{ i.Brand_name }}</td>
         <td>{{ i.model_name }}</td>
         <td>{{ i.price }}</td>
         <td>{{ i.gst }}</td>
         <td>{{ i.final_price }}</td>
         <td>
-            <a href= "{% url 'pro_update' i.id %}">
-            <button>Update</button>
-        </a>
+            <a href="{% url 'pro_update' i.id %}">
+                <button>Update</button>
+            </a>
         </td>
         <td>
             <a href="{% url 'pro_delete' i.id %}">

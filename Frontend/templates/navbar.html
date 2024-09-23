@@ -1,52 +1,67 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/product/home/"
-            >Home</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/product/productlist/">ProductList</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/product/productadd/">ProductAdd</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="/customer/customerlist/">CustomerList</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/customer/customeradd/">CustomerAdd</a>
-        </li>   
-         <li class="nav-item">
-          <a class="nav-link" href="/order/orderlist/">OrderList</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="/order/orderadd/">OrderAdd</a>
-        </li>
-        {% comment %} <li class="nav-item">   
-          <a class="nav-link" href="/authentication/loginpage/">Loginpage</a>
-        </li> {% endcomment %}
-        <li class="nav-item">   
-          <a class="nav-link" href="/product/about1/">About</a>
-        </li>
-           <li class="nav-item">   
-          <a class="nav-link" href="/logout/">LogOut</a>
-        </li>
-      </ul>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/product/home/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/productlist/">ProductList</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/productadd/">ProductAdd</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer/customerlist/">CustomerList</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer/customeradd/">CustomerAdd</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/order/orderlist/">OrderList</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/order/orderadd/">OrderAdd</a>
+                </li>
+                <li class="nav-item">   
+                    <a class="nav-link" href="/product/about1/">About</a>
+                </li>
+            </ul>
+            <a class="btn btn-outline-light" href="/logout/" role="button">LogOut</a>
+        </div>
     </div>
-  </div>
 </nav>
+
+<!-- Custom Styles -->
+<style>
+    .navbar .nav-link {
+        transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .navbar .nav-link:hover {
+        color: #007bff; /* Blue color on hover */
+        background-color: rgba(255, 255, 255, 0.2); /* Slightly lighten the background */
+    }
+
+    .navbar .btn {
+        margin-left: auto; /* Push the button to the right */
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .navbar .btn:hover {
+        background-color: #007bff; /* Blue background on hover */
+        color: white; /* White text on hover */
+    }
+</style>

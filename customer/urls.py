@@ -5,10 +5,10 @@ urlpatterns = [
     path('index1/',index),
     path('about1/',about),
      # Customer URLs
-    path('customerlist/', customerlist, name='customer_list'),
-    path('customeradd/', customeradd, name='cus_add'),
-    path('customerupdate/<int:id>/', customerupdate, name='cus_update'),
-    path('customerdelete/<int:id>/', customerdelete, name='cus_delete'),
-    
+   path('customerlist/',CustomerListView.as_view(),name='cus_list'),
+   path('customeradd/',CustomerAddView.as_view(),name='cus_add'),
+   path('customerupdate/<int:id>/',CustomerUpdateView.as_view(),name='cus_update'),
+   path('customerdelete/<int:id>/', CustomerDeleteView.as_view(), name='cus_delete')
 
-]
+   
+] 
